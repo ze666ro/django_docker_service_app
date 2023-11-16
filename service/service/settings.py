@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'django-insecure-76+o7=ox4hu7w9v6q)ur6r058%4@t60k!g9rien7xbbig28+$q
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -71,7 +69,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'service.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -82,14 +79,14 @@ WSGI_APPLICATION = 'service.wsgi.application'
 #     }
 # }
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.postgresql',
-         'HOST': os.environ.get('DB_HOST'),
-         'NAME': os.environ.get('DB_NAME'),
-         'USER': os.environ.get('DB_USER'),
-         'PASSWORD': os.environ.get('DB_PASS'),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': os.environ.get('DB_HOST'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
 
-     }
+    }
 }
 
 # Password validation
@@ -110,7 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -123,7 +119,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -148,3 +143,13 @@ LOGGING = {
 }
 
 CELERY_BROKER_URL = 'redis://redis:6379/0'
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/1",
+
+        }
+    }
+
+PRICE_CACHE_NAME = 'price_cache'
